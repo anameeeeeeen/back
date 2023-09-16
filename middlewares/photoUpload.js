@@ -17,17 +17,17 @@ const photoStorage = multer.diskStorage({
 })
 
 
-// photo upload middleware
+// Photo Upload Middleware
 const photoUpload = multer({
   storage: photoStorage,
-  filefilter: function(req,file,cb) {
-    if (file.mimetype.startWith("image")) {
-      cb(null, true)
+  fileFilter: function (req, file, cb) {
+    if (file.mimetype.startsWith("image")) {
+      cb(null, true);
     } else {
-      cb({ message: "Unsupported file format" }, false)
+      cb({ message: "Unsupported file format" }, false);
     }
   },
-  limits: { fileSize: 1024 * 1024 } // 1 megabyte
-})
+  limits: { fileSize: 1024 * 1024 }, // 1 megabyte
+});
 
-module.exports = photoUpload
+module.exports = photoUpload;
